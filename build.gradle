@@ -19,12 +19,10 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.2.11'
-    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.2.10'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
-    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
-    compile group: 'com.google.code.gson', name: 'gson', version: '2.2.2'
-    compile group: 'org.json', name: 'json', version: '20160212'
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
+    compileOnly group: 'com.google.code.gson', name: 'gson', version: '2.2.2'
+    testCompile group: 'com.google.code.gson', name: 'gson', version: '2.2.2'
     testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.1'
     testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.1'
 }

@@ -15,9 +15,6 @@
 package com.amazon.pay.response.parser;
 
 import com.amazon.pay.impl.PayLogUtil;
-import org.json.JSONObject;
-import org.json.JSONException;
-import org.json.XML;
 
 public class ResponseData {
     private final int statusCode;
@@ -54,17 +51,6 @@ public class ResponseData {
      */
     public String toXML() {
         return this.responseXml;
-    }
-
-    /**
-     * Converts the raw XML response to JSON format
-     *
-     * @return
-     *          JSON representation of response returned by Amazon Service API
-     */
-    public String toJSON() throws JSONException {
-        JSONObject jsonObj = XML.toJSONObject(this.responseXml);
-        return jsonObj.toString();
     }
 
 
