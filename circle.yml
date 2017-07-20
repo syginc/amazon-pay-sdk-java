@@ -1,0 +1,15 @@
+dependencies:
+  override:
+    - ./gradlew --console=plain dependencies
+test:
+  override:
+    - ./gradlew --console=plain test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+deployment:
+  release:
+    tag: /release-[0-9]+(\.[0-9]+)*/
+    owner: syginc
+    commands:
+      - ./gradlew --console=plain publish

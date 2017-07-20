@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'maven'
+    id 'maven-publish'
+    id 'com.github.kaklakariada.awsm-credentials-gradle' version '0.2.1'
 }
 
 group = 'com.amazon.pay'
@@ -34,6 +36,20 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 
 artifacts {
     archives sourcesJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+        }
+    }
+    repositories {
+        maven {
+            url "s3://syg-amazon-pay-repo/release"
+        }
+    }
 }
 
 task wrapper(type: Wrapper) {
